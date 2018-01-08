@@ -90,7 +90,6 @@ public class LinkedListExamples {
             prevNode = currNode;
             currNode = currNode.next;
             iterationCount++;
-            System.out.println(iterationCount);
         }
         if (position <= iterationCount) {
             newNode.next = currNode;
