@@ -1,15 +1,15 @@
-package LinkedLists;
+package linkedLists;
 
 public class LinkedListExamples {
 
-    static ListNode myLinkedList =
-            new ListNode(1,
-            new ListNode(5,
-            new ListNode(9,
-            new ListNode(2,
-            new ListNode(8,
-            new ListNode(5,
-            new ListNode(3, null)))))));
+    static Node myLinkedList =
+            new Node(1,
+            new Node(5,
+            new Node(9,
+            new Node(2,
+            new Node(8,
+            new Node(5,
+            new Node(3, null)))))));
 
     public static void main(String[] args) {
         System.out.println(myLinkedList);
@@ -25,7 +25,7 @@ public class LinkedListExamples {
         System.out.println(myLinkedList);
         myLinkedList = deleteAtTail(myLinkedList);
         System.out.println(myLinkedList);
-        ListNode middleNode = findMiddleNode(myLinkedList);
+        Node middleNode = findMiddleNode(myLinkedList);
         System.out.println(middleNode.data);
         myLinkedList = deleteAtPosition(myLinkedList, 4);
         System.out.println(myLinkedList);
@@ -33,13 +33,13 @@ public class LinkedListExamples {
         System.out.println(myLinkedList);
     }
 
-    private static ListNode append(ListNode head, int data) {
-        ListNode newNode = new ListNode(data);
+    private static Node append(Node head, int data) {
+        Node newNode = new Node(data);
         if (head == null) {
             head = newNode;
             return head;
         }
-        ListNode current = head;
+        Node current = head;
         while (current.next != null) {
             current = current.next;
         }
@@ -47,14 +47,14 @@ public class LinkedListExamples {
         return head;
     }
 
-    private static ListNode prepend(ListNode head, int data) {
-        ListNode newNode = new ListNode(data);
+    private static Node prepend(Node head, int data) {
+        Node newNode = new Node(data);
         newNode.next = head;
         head = newNode;
         return head;
     }
 
-    private static ListNode deleteAtHead(ListNode head) {
+    private static Node deleteAtHead(Node head) {
         if (head == null) {
             return null;
         }
@@ -62,12 +62,12 @@ public class LinkedListExamples {
         return head;
     }
 
-    private static ListNode deleteAtTail(ListNode head) {
+    private static Node deleteAtTail(Node head) {
         if (head == null || head.next == null) {
             return null;
         }
-        ListNode currNode = head;
-        ListNode prevNode = null;
+        Node currNode = head;
+        Node prevNode = null;
         while (currNode.next != null) {
             prevNode = currNode;
             currNode = currNode.next;
@@ -76,15 +76,15 @@ public class LinkedListExamples {
         return head;
     }
 
-    private static ListNode insertAtPosition(ListNode head, int position, int data) {
-        ListNode newNode = new ListNode(data);
+    private static Node insertAtPosition(Node head, int position, int data) {
+        Node newNode = new Node(data);
         if (position == 0) {
             newNode.next = head;
             head = newNode;
             return head;
         }
-        ListNode currNode = head;
-        ListNode prevNode = null;
+        Node currNode = head;
+        Node prevNode = null;
         int iterationCount = 0;
         while (currNode.next != null && iterationCount < position) {
             prevNode = currNode;
@@ -98,13 +98,13 @@ public class LinkedListExamples {
         return head;
     }
 
-    private static ListNode deleteAtPosition(ListNode head, int position) {
+    private static Node deleteAtPosition(Node head, int position) {
         if (position == 0) {
             head = head.next;
             return head;
         }
-        ListNode currNode = head;
-        ListNode prevNode = null;
+        Node currNode = head;
+        Node prevNode = null;
         int iterationCount = 0;
         while (currNode.next != null && iterationCount < position) {
             prevNode = currNode;
@@ -117,12 +117,12 @@ public class LinkedListExamples {
         return head;
     }
 
-    private static ListNode findMiddleNode(ListNode head) {
+    private static Node findMiddleNode(Node head) {
         if (head == null) {
             return head;
         }
-        ListNode slow = head;
-        ListNode fast = head;
+        Node slow = head;
+        Node fast = head;
         while (fast.next != null && fast.next.next != null) {
             slow = slow.next;
             fast = fast.next.next;
@@ -130,7 +130,7 @@ public class LinkedListExamples {
         return slow;
     }
 
-    private static ListNode deleteWithValue(ListNode head, int data) {
+    private static Node deleteWithValue(Node head, int data) {
         if (head == null) {
             return head;
         }
@@ -138,7 +138,7 @@ public class LinkedListExamples {
             head = head.next;
             return head;
         }
-        ListNode current = head;
+        Node current = head;
         while (current.next != null) {
             if (current.next.data == data) {
                 current.next = current.next.next;
@@ -149,4 +149,22 @@ public class LinkedListExamples {
         return head;
     }
 
+    private static class Node {
+        Integer data;
+        Node next = null;
+
+        Node(Integer val) {
+            this.data = val;
+        }
+
+        Node(Integer val, Node nxt) {
+            this.data = val;
+            this.next = nxt;
+        }
+
+        @Override
+        public String toString() {
+            return data + "=>" + next;
+        }
+    }
 }

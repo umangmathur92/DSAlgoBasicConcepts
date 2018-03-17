@@ -1,8 +1,8 @@
-package Trees;
+package trees;
 
 public class BinaryTreeExamples {
 
-    static Node myBinaryTree = new Node(20);
+    private static Node myBinaryTree = new Node(20);
 
     public static void main(String[] args) {
         myBinaryTree.left = new Node(10, new Node(5), new Node(15));
@@ -80,4 +80,21 @@ public class BinaryTreeExamples {
         }
     }
 
+    public static class Node {
+
+        int data;
+        Node left;
+        Node right;
+
+        public Node(int data) {
+            this.data = data;
+        }
+
+        public Node(int data, Node left, Node right) {
+            this.data = data;
+            this.left = left;
+            this.right = right;
+        }
+
+    }
 }
