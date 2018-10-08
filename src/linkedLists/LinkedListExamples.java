@@ -149,6 +149,10 @@ public class LinkedListExamples {
         return head;
     }
 
+    public static Node reverseLinkedList(Node head) {
+        return null;
+    }
+
     private static class Node {
         Integer data;
         Node next = null;
