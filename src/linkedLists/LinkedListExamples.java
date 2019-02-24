@@ -4,12 +4,12 @@ public class LinkedListExamples {
 
     static Node myLinkedList =
             new Node(1,
-            new Node(5,
-            new Node(9,
-            new Node(2,
-            new Node(8,
-            new Node(5,
-            new Node(3, null)))))));
+                    new Node(5,
+                            new Node(9,
+                                    new Node(2,
+                                            new Node(8,
+                                                    new Node(5,
+                                                            new Node(3, null)))))));
 
     public static void main(String[] args) {
         System.out.println(myLinkedList);
@@ -30,6 +30,8 @@ public class LinkedListExamples {
         myLinkedList = deleteAtPosition(myLinkedList, 4);
         System.out.println(myLinkedList);
         myLinkedList = insertAtPosition(myLinkedList, 5, 99);
+        System.out.println(myLinkedList);
+        myLinkedList = reverseLinkedList(myLinkedList);
         System.out.println(myLinkedList);
     }
 
@@ -56,7 +58,7 @@ public class LinkedListExamples {
 
     private static Node deleteAtHead(Node head) {
         if (head == null) {
-            return null;
+            return head;
         }
         head = head.next;
         return head;
@@ -150,7 +152,16 @@ public class LinkedListExamples {
     }
 
     public static Node reverseLinkedList(Node head) {
-        return null;
+        Node prevNode = null;
+        Node currNode = head;
+        while (currNode != null) {
+            Node temp = currNode.next;
+            currNode.next = prevNode;
+            prevNode = currNode;
+            currNode = temp;
+        }
+        head = prevNode;
+        return head;
     }
 
     private static class Node {
